@@ -1,7 +1,8 @@
 import http.client
-import mimetypes
+import websocket
 
-class broker :
+
+class Rest:
     def __init__(self,local_ip,public_ip,mac_address,api_key):
         self.content_type,self.accept = 'application/json','application/json'
         self.userType,self.sourceID = 'USER','WEB'
@@ -214,6 +215,7 @@ class broker :
             }
         response = self.send_request('POST',"api.order.modify",payload)
         return response
+    
     def order_book(self):
         payload = ''
         response = self.send_request('GET',"api.order.book",payload)
@@ -246,19 +248,3 @@ class broker :
         payload = ''
         response = self.send_request('GET',"api.position",payload)
         return response    
-
-    
-    
-
-#headers = {
-#          'Authorization': 'Bearer 042ec073-5a36-49e7-aaac-65b60d0e5e27',
-#          'Content-Type': 'application/json',
-#          'Accept': 'application/json',
-#          'X-UserType': 'USER',
-#          'X-SourceID': 'WEB',
-#          'X-ClientLocalIP': '192.168.168.168',
-#          'X-ClientPublicIP': '106.193.147.98',
-#          'X-MACAddress': '3C:91:80:37:A7:2F',
-#          'X-PrivateKey': 'qMSmE1YE'
-#        }    
-#
